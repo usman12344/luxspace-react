@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 export default function Hero() {
   return (
@@ -15,7 +14,7 @@ export default function Hero() {
           membuat ruangan terasa home
         </h2>
         <div>
-          <Link to="/browse-the-room" className="bg-pink-400 text-black hover:bg-black hover:text-pink-400 rounded-full px-8 py-3 mt-4 inline-block flex-none-transition duration-200">Explore Now</Link>
+          <a href="#browse-the-room" className="bg-pink-400 text-black hover:bg-black hover:text-pink-400 rounded-full px-8 py-3 mt-4 inline-block flex-none-transition duration-200">Explore Now</a>
         </div> 
       </div>
 
@@ -24,8 +23,10 @@ export default function Hero() {
         <div className="relative hero-image">
           <div className="overlay inset-0 bg-black opacity-30 z-10"></div>
             <div className="overlay right-0 bottom-0 md:inset-0">
-              <button className="video hero-cta focus:outline-none z-30 modal-trigger" data-content='<div className="">
+              <button className="video hero-cta focus:outline-none z-30 modal-trigger" data-content='<div class="w-screen pb-56 md:w-88 md:pb-56 relative z-20">
+              <div class="absolute w-full h-full">
                 <iframe width="100%" height="100%" src="https://www.youtube.com/embed/UYzBMGbdLj8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
               </div>'>
                 
               </button>
