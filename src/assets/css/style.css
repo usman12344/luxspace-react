@@ -82,7 +82,7 @@
     }
 
     .slider .thumbnail .item.selected:after{
-        @apply bg-opacity-35 border-opacity-100;
+        @apply bg-opacity-35 border-4 border-opacity-100;
     }
 
     .slider .preview {
