@@ -1,4 +1,4 @@
-// eslint no-extend-native: ["error", {"exceptions": ["Number"]}]
+/*eslint no-extend-native: ["error", { "exceptions": ["Number"] }]*/
 
 if(!Number.hasOwnProperty("currency"))
     Number.prototype.currency = function (decimals = 0) {
