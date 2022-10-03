@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import useAsync from 'helper/hooks/useAsync';
 import Carousel from 'components/Carousel/index';
 
+import 'helper/format/currency';
+
 import fetch from 'helper/fetch/index';
 
 function Loading(){
@@ -17,7 +19,7 @@ function Loading(){
 }
 
 export default function JustArrive() {
-  const { data, status, error, run, isLoading } = useAsync();
+  const { data, error, run, isLoading } = useAsync();
 
   const refContainer = useRef(null);
 
@@ -54,7 +56,7 @@ export default function JustArrive() {
                   <img src={item.imageUrl} alt={item.title} className="w-full h-full object-cover object-center" />
                 </div>
                 <h5 className="text-lg font-semibold mt-4">{item.title}</h5>
-                <span>IDR {item.price}</span>
+                <span>{item.price.currency()}</span>
                 <Link to={`/categories/${item.idc}/products/${item.id}`} className="stretched-link" >
                   {/* <!-- fake children --> */}
                 </Link>

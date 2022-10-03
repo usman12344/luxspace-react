@@ -1,8 +1,9 @@
 import React from 'react';
 
 import parse from 'html-react-parser';
+import 'helper/format/currency';
 
-import {useGlobalContext} from 'helper/hooks/useGlobalContext'
+import {useGlobalContext} from 'helper/hooks/useGlobalContext';
 
 export default function ProductDetails({ data }) {
   // console.log(data)
@@ -19,7 +20,7 @@ export default function ProductDetails({ data }) {
           <h2 className="text-5xl font-semibold">
             {data.title}
           </h2>
-          <span className="text-xl">IDR {data.price}</span>
+          <span className="text-xl">{data.price.currency()}</span>
         </div>
         <div className="flex-1">
           <div className="slider">
@@ -49,7 +50,7 @@ export default function ProductDetails({ data }) {
               {data.title}
             </h2>
             <p className="text-lg">
-              IDR {data.price}
+              {data.price.currency()}
             </p>
           </div>
 

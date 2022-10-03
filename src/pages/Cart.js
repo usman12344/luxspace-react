@@ -8,10 +8,13 @@ import Sidemap from 'parts/HomePage/Sidemap';
 import ShippingDetails from 'parts/Cart/ShippingDetails';
 import ShoppingCart from 'parts/Cart/ShoppingCart';
 
+import Document from 'parts/HomePage/Document';
+
 
 export default function Cart(props) {
+
   return (
-    <>
+    <Document>
     <Header theme="black"/>
     <Breadcrumb List={[
       { url: "/", name: "Home" },
@@ -29,6 +32,6 @@ export default function Cart(props) {
 
     <Sidemap />
     <Footer />
-    </>
+    </Document>
   )
 }

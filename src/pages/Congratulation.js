@@ -6,11 +6,12 @@ import Breadcrumb from 'components/Breadcrumb.js'
 import Footer from 'parts/HomePage/Footer';
 import Sidemap from 'parts/HomePage/Sidemap';
 import { Link } from 'react-router-dom';
-
+import Document from 'parts/HomePage/Document';
 
 export default function Congratulation(props) {
+
   return (
-    <>
+    <Document>
     <Header theme="black"/>
     <Breadcrumb List={[
       { url: "/", name: "Home" },
@@ -32,6 +33,6 @@ export default function Congratulation(props) {
 
     <Sidemap />
     <Footer />
-    </>
+    </Document>
   )
 }

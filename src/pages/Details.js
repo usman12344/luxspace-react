@@ -10,8 +10,13 @@ import Sidemap from 'parts/HomePage/Sidemap';
 import Footer from 'parts/HomePage/Footer';
 import ProductDetails from 'parts/Details/ProductDetails';
 import Suggestion from 'parts/Details/Suggestion';
-import useAsync from 'helper/hooks/useAsync'
-import fetch from 'helper/fetch/index'
+import useAsync from 'helper/hooks/useAsync';
+import fetch from 'helper/fetch/index';
+import PageErrorMessage from 'parts/PageErrorMessage';
+
+
+
+import Document from 'parts/HomePage/Document';
 
 function LoadingProductDetails(){
   return <section className="container mx-auto">
@@ -96,7 +101,7 @@ function LoadingSuggestion(){
 export default function Details(props) {
   const {idp} = useParams();
 
-  const {  data, run, isLoading } = useAsync({data: []});
+  const {  data, run, isLoading, isError, error } = useAsync({data: []});
 
   React.useEffect(() => {
     run (
@@ -104,12 +109,12 @@ export default function Details(props) {
         { url : `/api/products/${idp}` }
       )
     )
-  }, [run]);
+  }, [run, idp]);
 
   
 
   return (
-    <>
+    <Document>
     <Header theme="black"/>
     <Breadcrumb List={[
       { url: "/", name: "Home" },
@@ -118,18 +123,26 @@ export default function Details(props) {
     ]} />
 
     {
-      isLoading ? <LoadingProductDetails /> :
-    <ProductDetails data={data} />
-    } 
+      isError ? <PageErrorMessage title="Product Not Found" body={error.errors.message} /> :
+      <>
+          {
+            isLoading ? <LoadingProductDetails /> :
+          <ProductDetails data={data} />
+          } 
 
-
-    {
-      isLoading ? <LoadingSuggestion /> :
-    <Suggestion data={data?.relatedProducts || {}} />
+          {
+            isLoading ? <LoadingSuggestion /> :
+          <Suggestion data={data.relatedProducts || {}} />
+          } 
+      </>
     }
+
+   
+
+     
     <Client />
     <Sidemap />
     <Footer />
-    </>
+    </Document>
   )
 }

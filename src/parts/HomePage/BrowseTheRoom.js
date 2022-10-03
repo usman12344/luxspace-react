@@ -2,6 +2,8 @@ import React, {useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import useAsync from 'helper/hooks/useAsync';
 
+import 'helper/format/thousand'
+
 import fetch from 'helper/fetch/index';
 
 function Loading({ratio = {}}) {
@@ -110,9 +112,9 @@ export default function BrowseTheRoom() {
               <h5 className="text-lg font-semibold">
                 {item.title}
               </h5>
-              <span className="">{item.products} item{item.products > 1 ? "s" : ""}</span>
+              <span className="">{item.products.thousand()} item{item.products > 1 ? "s" : ""}</span>
             </div>
-            <Link to="/categories/:idc" className="stretched-link">
+            <Link to="/categories/:idc" className="">
               {/* <!-- fake children --> */}
             </Link>
           </div>
